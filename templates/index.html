@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Birthday Invitation 🎂</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Georgia, "Times New Roman", serif;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    #333333,
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    #222222,
+                    transparent 35%
+                ),
+                linear-gradient(
+                    135deg,
+                    #080808,
+                    #1c1c1c
+                );
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           LAYOUT
+        ========================= */
+
+        .page {
+            width: 100%;
+            max-width: 1100px;
+
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+
+            gap: 20px;
+        }
+
+
+        /* =========================
+           BIRTHDAY CARD
+        ========================= */
+
+        .card {
+            position: relative;
+
+            width: 50%;
+
+            padding: 50px 40px;
+
+            text-align: center;
+
+            background: rgba(20, 20, 20, 0.94);
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            border-radius: 30px;
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.6);
+
+            animation: appear 1s ease;
+
+            z-index: 2;
+        }
+
+
+        /* =========================
+           TOP TEXT
+        ========================= */
+
+        .small {
+            color: #999999;
+
+            font-size: 13px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            margin-bottom: 18px;
+        }
+
+
+        /* =========================
+           CAKE
+        ========================= */
+
+        .cake {
+            font-size: 65px;
+
+            margin-bottom: 15px;
+
+            animation: float 3s ease-in-out infinite;
+        }
+
+
+        /* =========================
+           TITLE
+        ========================= */
+
+        h1 {
+            color: #ffffff;
+
+            font-size: clamp(40px, 6vw, 64px);
+
+            line-height: 0.95;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           NAME
+        ========================= */
+
+        .name {
+            color: #eeeeee;
+
+            font-size: 29px;
+
+            font-weight: bold;
+
+            margin-bottom: 20px;
+        }
+
+
+        /* =========================
+           MESSAGE
+        ========================= */
+
+        .message {
+            color: #cccccc;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+
+            margin: 0 auto 30px;
+
+            max-width: 420px;
+        }
+
+
+        /* =========================
+           DETAILS
+        ========================= */
+
+        .details {
+            display: grid;
+
+            gap: 12px;
+
+            margin: 25px 0;
+        }
+
+
+        .detail {
+            background: rgba(45, 45, 45, 0.85);
+
+            border: 1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 16px;
+
+            padding: 15px;
+
+            color: #dddddd;
+        }
+
+
+        .detail strong {
+            display: block;
+
+            color: #ffffff;
+
+            margin-bottom: 5px;
+
+            font-size: 13px;
+
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================
+           RSVP BUTTONS
+        ========================= */
+
+        form {
+            margin-top: 10px;
+        }
+
+
+        .rsvp {
+            display: inline-block;
+
+            margin-top: 10px;
+
+            padding: 14px 25px;
+
+            border: none;
+
+            border-radius: 999px;
+
+            background: #ffffff;
+
+            color: #111111;
+
+            text-decoration: none;
+
+            font-family: Arial, sans-serif;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.35);
+
+            transition:
+                transform 0.25s ease,
+                background 0.25s ease;
+        }
+
+
+        .rsvp:hover {
+            transform: translateY(-3px);
+
+            background: #dddddd;
+        }
+
+
+        /* NO BUTTON */
+
+        .rsvp.no {
+            background: #444444;
+
+            color: #ffffff;
+
+            margin-left: 8px;
+        }
+
+
+        .rsvp.no:hover {
+            background: #666666;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            margin-top: 30px;
+
+            color: #888888;
+
+            font-size: 13px;
+        }
+
+
+        /* =========================
+           PHOTO
+        ========================= */
+
+        .photo-box {
+            width: 50%;
+
+            min-height: 700px;
+
+            border-radius: 30px;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(255, 255, 255, 0.15);
+
+            box-shadow:
+                0 25px 70px rgba(0, 0, 0, 0.6);
+
+            background: #111111;
+
+            animation: appear 1.2s ease;
+
+            position: relative;
+        }
+
+
+        .photo-box img {
+            width: 100%;
+
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            object-position: center;
+
+            transition: transform 0.5s ease;
+        }
+
+
+        .photo-box:hover img {
+            transform: scale(1.03);
+        }
+
+
+        /* =========================
+           FALLING HEARTS
+        ========================= */
+
+        .heart {
+            position: fixed;
+
+            font-size: 22px;
+
+            pointer-events: none;
+
+            animation: fall linear forwards;
+
+            z-index: 10;
+        }
+
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(30px)
+                    scale(0.96);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+        }
+
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+
+        @keyframes fall {
+
+            from {
+                transform:
+                    translateY(-50px)
+                    rotate(0deg);
+
+                opacity: 1;
+            }
+
+            to {
+                transform:
+                    translateY(110vh)
+                    rotate(360deg);
+
+                opacity: 0;
+            }
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            body {
+                padding: 20px;
+            }
+
+            .page {
+                flex-direction: column;
+            }
+
+            .card,
+            .photo-box {
+                width: 100%;
+            }
+
+            .photo-box {
+                min-height: 600px;
+            }
+        }
+
+
+        /* =========================
+           PHONE
+        ========================= */
+
+        @media (max-width: 500px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .card {
+                padding: 40px 22px;
+            }
+
+            .cake {
+                font-size: 55px;
+            }
+
+            h1 {
+                font-size: 42px;
+            }
+
+            .name {
+                font-size: 25px;
+            }
+
+            .message {
+                font-size: 15px;
+            }
+
+            .photo-box {
+                min-height: 500px;
+            }
+
+            .rsvp {
+                width: 100%;
+
+                margin-left: 0;
+
+                margin-top: 10px;
+            }
+
+            .rsvp.no {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <div class="page">
+
+        <!-- =========================
+             LEFT: BIRTHDAY INVITATION
+        ========================== -->
+
+        <div class="card">
+
+            <div class="small">
+                You're invited to
+            </div>
+
+
+            <div class="cake">
+                🎂
+            </div>
+
+
+            <h1>
+                Birthday<br>
+                Party
+            </h1>
+
+
+            <div class="name">
+                Hi {{ name }}! 🤍
+            </div>
+
+
+            <p class="message">
+    It would be an honor if you were present at my birthday. ✨
+            </p>
+
+
+            <div class="details">
+
+                <div class="detail">
+                    <strong>📅 DATE</strong>
+                    20 September 2026
+                </div>
+
+
+                <div class="detail">
+                    <strong>⏰ TIME</strong>
+                    6:30 PM
+                </div>
+
+
+                <div class="detail">
+                    <strong>📍 LOCATION</strong>
+                Chú Kiệt 5 Garden Man Thiện Tăng Nhơn Phú TP.HCM
+                </div>
+
+            </div>
+
+
+            <!-- RSVP -->
+
+            <form action="/rsvp" method="POST">
+
+                <input
+                    type="hidden"
+                    name="name"
+                    value="{{ name }}"
+                >
+
+
+                <button
+                    class="rsvp"
+                    type="submit"
+                    name="response"
+                    value="YES"
+                >
+                    YES, I'M COMING! 🎉
+                </button>
+
+
+                <button
+                    class="rsvp no"
+                    type="submit"
+                    name="response"
+                    value="NO"
+                >
+                    Sorry, I can't make it 😭
+                </button>
+
+            </form>
+
+
+            <div class="footer">
+                Can't wait to see you there ♡
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             RIGHT: YOUR PHOTO
+        ========================== -->
+
+        <div class="photo-box">
+
+            <img
+                src="{{ url_for('static', filename='myphoto.jpg') }}"
+                alt="Birthday photo"
+            >
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         FALLING HEARTS
+    ========================== -->
+
+    <script>
+
+        const hearts = [
+            "🖤",
+            "🤍",
+            "✨",
+            "🩶"
+        ];
+
+
+        function createHeart() {
+
+            const heart =
+                document.createElement("div");
+
+
+            heart.className = "heart";
+
+
+            heart.textContent =
+                hearts[
+                    Math.floor(
+                        Math.random() * hearts.length
+                    )
+                ];
+
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+
+            heart.style.animationDuration =
+                (4 + Math.random() * 4) + "s";
+
+
+            heart.style.fontSize =
+                (15 + Math.random() * 15) + "px";
+
+
+            document.body.appendChild(heart);
+
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            }, 8000);
+        }
+
+
+        setInterval(createHeart, 900);
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Thank You 💗</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Georgia, serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff0f6,
+                    #eeeaff
+                );
+
+            text-align: center;
+        }
+
+        .box {
+            background: white;
+
+            padding: 50px 30px;
+
+            border-radius: 30px;
+
+            max-width: 430px;
+            width: 85%;
+
+            box-shadow:
+                0 25px 70px
+                rgba(100, 70, 100, 0.15);
+        }
+
+        .emoji {
+            font-size: 70px;
+        }
+
+        h1 {
+            color: #72566b;
+        }
+
+        p {
+            color: #806b78;
+            line-height: 1.6;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+
+        <div class="emoji">
+            {% if response == "YES" %}
+                🎉
+            {% else %}
+                💗
+            {% endif %}
+        </div>
+
+        <h1>
+            Thank you, {{ name }}!
+        </h1>
+
+        {% if response == "YES" %}
+
+            <p>
+                YAY! Can't wait to see you there! 🥳
+            </p>
+
+        {% else %}
+
+            <p>
+                Aww, we'll miss you! 💕
+            </p>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
